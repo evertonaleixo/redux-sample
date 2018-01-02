@@ -4,8 +4,8 @@ let loadCarsAction = () => {
 	return {
 		type: LOAD_CAR,
 		endpoint: {
-			url: 'https://survey.codewinds.com/polls',
-			method: 'post'
+			url: 'http://www.mocky.io/v2/5a4bed87300000f51da69786',
+			method: 'get'
 		}
 	};
 }

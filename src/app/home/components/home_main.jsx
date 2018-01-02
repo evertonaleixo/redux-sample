@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import Dealership from '../../car/components/dealership'
 import Garage from '../../car/components/garage'
-import Workshop from '../../car/components/workshop'
 
 class Home extends React.Component {
 

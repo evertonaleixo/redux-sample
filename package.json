@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "X-editable": "github:vitalets/x-editable",
+    "axios": "^0.17.1",
     "bootstrap": "3.3.7",
     "bootstrap-colorpicker": "2.5.1",
     "bootstrap-duallistbox": "github:istvan-ujjmeszaros/bootstrap-duallistbox",

@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic';
+import axios from 'axios';
 
 // const validationLogic = createLogic({
 //   type: ADD_USER,
@@ -40,30 +41,31 @@ const fetchPollsLogic = createLogic({
   	if(!action.type.startsWith("ASYNC_")) {
   		done();
   	} else {
-  		action.type = action.type.substr(6) + '_SUCCESS';
+  		action.type = action.type.substr(6);
   		let url = action.endpoint.url;
   		let method = action.endpoint.method;
+  		let body = action.endpoint.body | {};
 
   		delete action.endpoint;
 
-  		let dataFromServer = {model: 'fusca', val: 3000};
-  		action = Object.assign(action, {payload:  dataFromServer} );
-
-  		console.log(method, url, action);
-
-  		dispatch(action);
-  		done();
+  		axios({
+  			method: method,
+  			url: url,
+  			data: body
+  		})
+  		.then(resp => {
+  			action.type = action.type + '_SUCCESS';
+  			action = Object.assign(action, {payload:  resp.data} );
+  			dispatch(action);
+  		})
+  		.catch(err => {
+  			action.type = action.type + '_ERR';
+  			action = Object.assign(action, {error:  true, payload: err} );
+  			dispatch(action);
+  		})
+  		.then(() => done());
+  		
   	}
-    // axios.get('https://survey.codewinds.com/polls')
-      // .then(resp => resp.data.polls)
-      // .then(polls => dispatch({ type: 'AAAAAAAA',
-      //                           payload: polls }))
-      // .catch(err => {
-      //        console.error(err); // log since could be render err
-      //        dispatch({ type: 'AAAAAAAA', payload: err,
-      //                   error: true })
-      // })
-      // .then(() => done());
   }
 });
 
