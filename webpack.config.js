@@ -109,7 +109,7 @@ module.exports = (env) => {
       navigator: "empty",
       xmlhttprequest: "empty",
       location: "empty",
-      child_process: "empty"
+      child_process: "empty",
     },
     devtool: isDev ? 'eval' : 'cheap-source-map', //false, //isDev ? 'eval' : 'cheap-source-map',
 

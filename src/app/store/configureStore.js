@@ -3,10 +3,14 @@
  */
 
 import {createStore, combineReducers,  applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
+import { createLogicMiddleware } from 'redux-logic';
+import arrLogic from './logics'
+
+// import thunk from 'redux-thunk'
 import {routerReducer} from 'react-router-redux'
 
 import {config} from '../config/config'
+
 // import {handleBodyClasses, dumpLayoutToStorage, layoutReducer} from '../components/layout'
 
 // import navigationReducer from '../components/navigation/navigationReducer'
@@ -20,10 +24,12 @@ import {config} from '../config/config'
 // import {voiceControlOn} from "../components/voice-control/VoiceActions";
 
 const home_counter = require("../home/reducers/home_counter_reducer").default;
+const carReducer = require("../car/reducers/car_reducer").default;
 
 export const rootReducer = combineReducers(
   {
     home_counter: home_counter,
+    carReducer: carReducer,
     routing: routerReducer,
     // layout: layoutReducer,
     // navigation: navigationReducer,
@@ -35,13 +41,16 @@ export const rootReducer = combineReducers(
   }
 );
 
-const store =  createStore(rootReducer, {}
-  // applyMiddleware(
+const logicMiddleware = createLogicMiddleware(arrLogic, {});
+
+const store =  createStore(rootReducer,// {}
+  applyMiddleware(
+    logicMiddleware
   //   thunk//,
   //   handleBodyClasses,
   //   dumpLayoutToStorage,
   //   VoiceMiddleware
-  // )
+  )
 );
 
 // store.dispatch(requestUserInfo());
