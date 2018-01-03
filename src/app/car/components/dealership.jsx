@@ -35,7 +35,7 @@ class Dealership extends React.Component {
         <h3>Comprar carro</h3>
 
         {carsDealership.map((car, idx) => (
-            <Car model={car.model} toBuy={true} val={car.val} onAct={this.props.buyCar} id={idx}/>
+            <Car model={car.model} toBuy={true} val={car.val} onAct={this.props.buyCar} id={idx} key={idx}/>
           ))}
       </div>
     );
