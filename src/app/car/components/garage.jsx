@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 
 import Car from './car'
-import sellCarAction from '../services/sell_car_service'
 import marketVariationAction from '../services/market_variation_service'
+import CarService from '../services/car_service'
 
 class Garage extends React.Component {
   
@@ -48,7 +48,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {  
   return bindActionCreators({
-    sellCar: sellCarAction,
+    sellCar: CarService.sellCarAction(),
     marketVariation: marketVariationAction
   }, dispatch);
 }

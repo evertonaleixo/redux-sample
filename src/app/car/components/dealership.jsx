@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 
 import Car from './car'
-import buyCarAction from '../services/buy_car_service'
-import loadCarsAction from '../services/renew_cars_service'
+import CarService from '../services/car_service'
 
 
 class Dealership extends React.Component {
@@ -49,10 +48,10 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {  
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    buyCar: buyCarAction,
-    renewCars: loadCarsAction
+    buyCar: CarService.buyCarAction(),
+    renewCars: CarService.loadCarsAction()
   }, dispatch);
 }
 
