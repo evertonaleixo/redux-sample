@@ -1,8 +1,6 @@
-import buyCarAction from '../../app/car/services/buy_car_service'
+import CarService from '../../app/car/services/car_service'
 
 
 test('buy car action', () => {
-	// console.log();
-
-	expect(buyCarAction().type).toBe('BUY_CAR');
+	expect(CarService.buyCarAction()().type).toBe('BUY_CAR');
 });
