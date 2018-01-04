@@ -14,34 +14,60 @@ class GenericRemoteService {
     }
 
     getAction(){
-        console.log("etttndpoint", this.endpoint);
-        // super.callService(LOAD_CAR);
+        return (params={}) => {
+            let endpoint = this.getFinalEndpoint(params, suffix);
 
-        return () => {
-            let x = {
+            let actionCreator = {
                 type: this.ACTION_GET,
                 endpoint: {
-                    url: this.endpoint,
-                    method: 'get'
+                    url: endpoint,
+                    method: 'get',
+                    body: payload,
                 }
             };
 
-            return x;
+            return actionCreator;
         };
     }
 
-    callGenericAction(actionType, method='get'){
+    callGenericAction(actionType, method='get', suffix='', params={size:1, page:0} ,payload={}){
+        let endpoint = this.getFinalEndpoint(params, suffix);
+
         return () => {
-            let x = {
+            let actionCreator = {
                 type: actionType,
                 endpoint: {
-                    url: this.endpoint,
-                    method: method
+                    url: endpoint,
+                    method: method,
+                    body: payload,
                 }
             };
 
-            return x;
+            return actionCreator;
         };
+    }
+
+    getFinalEndpoint(params, suffix?) {
+        let final_endpoint = this.endpoint;
+
+        if (suffix) {
+            final_endpoint = final_endpoint + suffix
+        }
+
+        if (params) {
+            let params_list = '';
+            let i = 0;
+
+            for(var attr in params) {
+                if (i++ != 0)
+                    params_list += "&";
+                params_list +=  attr + "=" + params[attr];
+            }
+
+            final_endpoint += "?" + params_list;
+        }
+
+        return final_endpoint;
     }
 }
 

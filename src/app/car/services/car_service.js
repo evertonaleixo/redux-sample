@@ -15,6 +15,15 @@ class CarService extends GenericRemoteService {
     loadCarsAction(){
         return super.callGenericAction(LOAD_CAR);
     }
+
+    // get a gat by ID
+    getCarAction(){
+        return (idx=1) => {
+            let suffix = "/"+idx;
+            console.log('sufixo', suffix);
+            return super.callGenericAction(LOAD_CAR, 'get', suffix)();
+        }
+    }
     
     sellCarAction(){
         return (idx, val) => {
