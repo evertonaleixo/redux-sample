@@ -1,7 +1,7 @@
 import { LOAD_CAR, SELL_CAR, BUY_CAR } from '../reducers/actions_type'
 import GenericRemoteService from '../../store/generic_service'
 
-let endpoint = 'http://www.mocky.io/v2/5a4bed87300000f51da69786';
+let endpoint = 'https://www.mocky.io/v2/5a4bed87300000f51da69786';
 let mapping = {
     getAction: LOAD_CAR
 }
