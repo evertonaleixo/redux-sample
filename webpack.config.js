@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 const path = require('path');
 const webpack = require('webpack');
 
@@ -95,8 +97,18 @@ module.exports = (env) => {
       // hot: true,
       compress:true,
       publicPath: '/',
-      stats: "minimal"
-
+      stats: "minimal",
+      host: "0.0.0.0",
+      https: {
+        key: fs.readFileSync("./cert-ojc2017.key"),
+        cert: fs.readFileSync("./cert-ojc2017.crt")
+      },
+      disableHostCheck: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      }
     },
     stats: "minimal",
     performance: {
@@ -117,6 +129,7 @@ module.exports = (env) => {
       new CleanWebpackPlugin(['dist']),
       new CopyWebpackPlugin([
         {from: './src/index.html'},
+        {from: './src/service-worker.js'},
         {from: './src/assets', to: './assets'},
 
       ]),

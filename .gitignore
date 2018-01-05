@@ -8,6 +8,9 @@ bin-release/
 node_modules
 package-lock.json
 ./package-lock.json
+cert*
+.DS_Store
+npm-debug.log
 
 # Other files and folders
 .settings/

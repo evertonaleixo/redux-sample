@@ -47,7 +47,7 @@ class GenericRemoteService {
         };
     }
 
-    getFinalEndpoint(params, suffix?) {
+    getFinalEndpoint(params, suffix) {
         let final_endpoint = this.endpoint;
 
         if (suffix) {
