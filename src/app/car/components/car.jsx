@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 class Car extends React.Component {
 
   onAct(e) {
-    console.log(e);
     this.props.onAct(this.props.id, this.props.val);
   }
 

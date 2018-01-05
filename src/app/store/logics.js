@@ -17,10 +17,6 @@ const addUniqueId = createLogic({
   type: '*',
   transform({ getState, action }, next) {
     // add unique tid to action.meta of every action
-    console.log("getState", getState());
-    console.log("action", action);
-    console.log("next", next);
-
     const existingMeta = action.meta || {};
     const meta = {
       ...existingMeta,
