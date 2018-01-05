@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from '../actions/home_counter_actions'
+import { INCREMENT, DECREMENT } from './actions_type'
 import { BUY_CAR, SELL_CAR } from '../../car/reducers/actions_type'
 
 export default (state = {money: 20000}, action) => {
