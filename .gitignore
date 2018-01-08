@@ -5,6 +5,7 @@ bin-release/
 [Oo]bj/ # FlashDevelop obj
 [Bb]in/ # FlashDevelop bin
 
+build
 node_modules
 package-lock.json
 ./package-lock.json

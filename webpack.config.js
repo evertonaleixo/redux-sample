@@ -28,7 +28,7 @@ module.exports = (env) => {
       ]
     },
     output: {
-      path: path.resolve(__dirname, './dist'),
+      path: path.resolve(__dirname, './build'),
       filename: isDev ? 'js/[name].bundle.js' : 'js/[id].[hash].bundle.js',
       sourceMapFilename: isDev ? 'js/[name].bundle.map' : 'js/[id].[chunkhash].bundle.map',
       chunkFilename: isDev ? 'js/[name].chunk.js' : 'js/[id].[chunkhash].chunk.js',
@@ -92,17 +92,17 @@ module.exports = (env) => {
     devServer: {
 
       // historyApiFallback: true,
-      contentBase: path.join(__dirname, "dist"),
-      port: 2200,
+      contentBase: path.join(__dirname, "build"),
+      port: 3000,
       // hot: true,
       compress:true,
       publicPath: '/',
       stats: "minimal",
       host: "0.0.0.0",
-      https: {
-        key: fs.readFileSync("./cert-ojc2017.key"),
-        cert: fs.readFileSync("./cert-ojc2017.crt")
-      },
+      // https: {
+      //   key: fs.readFileSync("./cert-ojc2017.key"),
+      //   cert: fs.readFileSync("./cert-ojc2017.crt")
+      // },
       disableHostCheck: true,
       headers: {
         "Access-Control-Allow-Origin": "*",

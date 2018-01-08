@@ -7,7 +7,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --env production",
     "build-dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --colors  --env development",
-    "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --progress --env development",
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --progress --env development",
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
