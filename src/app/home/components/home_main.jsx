@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'; 
+import { Link } from 'react-router'
 
 import Dealership from '../../car/components/dealership'
 import Garage from '../../car/components/garage'
@@ -30,8 +31,19 @@ class Home extends React.Component {
             Ola {name}! Voce tem {money} reais.
           </h1>
 
-          <Dealership />
-          <Garage />
+          <button className="btn btn-success" style={{margin:15}}>
+            <Link to='home/garage'>
+              Garagem
+            </Link>
+          </button>
+
+          <button className="btn btn-success" style={{margin:15}}>
+            <Link to='home/dealership'>
+              Comércio
+            </Link>
+          </button>
+
+          {this.props.children}
 
     		</div>
     );
