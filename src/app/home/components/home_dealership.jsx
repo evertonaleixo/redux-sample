@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import Dealership from '../../car/components/dealership'
 
-class Home extends React.Component {
+class HomeDealership extends React.Component {
 
   handleFactory() {
     
@@ -39,4 +39,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeDealership)

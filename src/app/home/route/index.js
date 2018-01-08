@@ -1,17 +1,22 @@
-import  Garage  from '../components/home_garage'
-import Dealership from '../components/home_dealership'
-
 export default {
   path: 'home',
   component: require('../components/home_main').default,
   childRoutes: [
   	{
   		path: 'garage',
-  		component: Garage
+  		getComponent(nextState, cb){
+        System.import(/* webpackChunkName: "garage" */ '../components/home_garage').then((m)=> {
+          cb(null, m.default)
+        })
+      }
   	},
   	{
   		path: 'dealership',
-  		component: Dealership
+  		getComponent(nextState, cb){
+        System.import(/* webpackChunkName: "dealership" */ '../components/home_dealership').then((m)=> {
+          cb(null, m.default)
+        })
+      }
   	}
   ]
 };
